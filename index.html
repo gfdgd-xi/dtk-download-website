@@ -16,9 +16,13 @@
         background-color: #eee;
         z-index: 9999;
     }
+    pre {
+        overflow: auto;
+    }
 </style>
-<body>
+<body onload="ChangeRelease();UpdateCopyrightInfo();">
     <div id="introduce">
+        <h3>介绍</h3>
         <p>DTK（Development ToolKit）是统信基于 Qt 开发的一整套简单且实用的通用开发框架，处于统信UOS系统中的核心位置。</p>
     </div>
     <div id="download">
@@ -43,16 +47,18 @@
             </p>
         </div>
         <div id="DownloadUrlShow">
+            <h3>添加 apt 源（推荐）</h3>
             <div id="DownloadUrlTips">
-
+                <pre><code id="AddAptMirrorCode"></code></pre>
             </div>
+            <h3>直接下载 deb</h3>
             <div id="DownloadUrl">
 
             </div>
         </div>
     </div>
-    <div id="copyright">
-        <p align="center" >©2021~2023 gfdgd xi</p>
+    <div id="CopyrightFrame">
+        <h3 align="center" id="CopyrightInfo">©2021~2023 gfdgd xi</h3>
     </div>
 </body>
 <script>
@@ -138,47 +144,53 @@
         ],
         [
             [
-                "http://11.debian.dtk.gfdgdxi.top/amd64/5.6.4/libdtkcommon_5.6.4-1_amd64.deb",
-                "http://11.debian.dtk.gfdgdxi.top/amd64/5.6.4/libdtkcore5-bin_5.6.12_amd64.deb",
-                "http://11.debian.dtk.gfdgdxi.top/amd64/5.6.4/libdtkcore5_5.6.12_amd64.deb",
-                "http://11.debian.dtk.gfdgdxi.top/amd64/5.6.4/libdtkgui5-bin_5.6.11_amd64.deb",
-                "http://11.debian.dtk.gfdgdxi.top/amd64/5.6.4/libdtkgui5_5.6.11_amd64.deb",
-                "http://11.debian.dtk.gfdgdxi.top/amd64/5.6.4/libdtkwidget5-bin_5.6.12_amd64.deb",
-                "http://11.debian.dtk.gfdgdxi.top/amd64/5.6.4/libdtkwidget5_5.6.12_amd64.deb"
-            ],
-            [
-                "http://11.debian.dtk.gfdgdxi.top/amd64/5.4.20/dde-qt5integration_5.1.12_amd64.deb",
-                "http://11.debian.dtk.gfdgdxi.top/amd64/5.4.20/dde-qt5xcb-plugin_5.0.42_amd64.deb",
-                "http://11.debian.dtk.gfdgdxi.top/amd64/5.4.20/libdtkcommon_5.5.17_amd64.deb",
-                "http://11.debian.dtk.gfdgdxi.top/amd64/5.4.20/libdtkcore5-bin_5.4.20_amd64.deb",
-                "http://11.debian.dtk.gfdgdxi.top/amd64/5.4.20/libdtkcore5_5.4.20_amd64.deb",
-                "http://11.debian.dtk.gfdgdxi.top/amd64/5.4.20/libdtkgui5-bin_5.4.15_amd64.deb",
-                "http://11.debian.dtk.gfdgdxi.top/amd64/5.4.20/libdtkgui5_5.4.15_amd64.deb",
-                "http://11.debian.dtk.gfdgdxi.top/amd64/5.4.20/libdtkwidget5-bin_5.4.20_amd64.deb",
-                "http://11.debian.dtk.gfdgdxi.top/amd64/5.4.20/libdtkwidget5_5.4.20_amd64.deb"
+                [
+                    "http://11.debian.dtk.gfdgdxi.top/amd64/5.6.4/libdtkcommon_5.6.4-1_amd64.deb",
+                    "http://11.debian.dtk.gfdgdxi.top/amd64/5.6.4/libdtkcore5-bin_5.6.12_amd64.deb",
+                    "http://11.debian.dtk.gfdgdxi.top/amd64/5.6.4/libdtkcore5_5.6.12_amd64.deb",
+                    "http://11.debian.dtk.gfdgdxi.top/amd64/5.6.4/libdtkgui5-bin_5.6.11_amd64.deb",
+                    "http://11.debian.dtk.gfdgdxi.top/amd64/5.6.4/libdtkgui5_5.6.11_amd64.deb",
+                    "http://11.debian.dtk.gfdgdxi.top/amd64/5.6.4/libdtkwidget5-bin_5.6.12_amd64.deb",
+                    "http://11.debian.dtk.gfdgdxi.top/amd64/5.6.4/libdtkwidget5_5.6.12_amd64.deb"
+                ],
+                [
+                    "http://11.debian.dtk.gfdgdxi.top/amd64/5.4.20/dde-qt5integration_5.1.12_amd64.deb",
+                    "http://11.debian.dtk.gfdgdxi.top/amd64/5.4.20/dde-qt5xcb-plugin_5.0.42_amd64.deb",
+                    "http://11.debian.dtk.gfdgdxi.top/amd64/5.4.20/libdtkcommon_5.5.17_amd64.deb",
+                    "http://11.debian.dtk.gfdgdxi.top/amd64/5.4.20/libdtkcore5-bin_5.4.20_amd64.deb",
+                    "http://11.debian.dtk.gfdgdxi.top/amd64/5.4.20/libdtkcore5_5.4.20_amd64.deb",
+                    "http://11.debian.dtk.gfdgdxi.top/amd64/5.4.20/libdtkgui5-bin_5.4.15_amd64.deb",
+                    "http://11.debian.dtk.gfdgdxi.top/amd64/5.4.20/libdtkgui5_5.4.15_amd64.deb",
+                    "http://11.debian.dtk.gfdgdxi.top/amd64/5.4.20/libdtkwidget5-bin_5.4.20_amd64.deb",
+                    "http://11.debian.dtk.gfdgdxi.top/amd64/5.4.20/libdtkwidget5_5.4.20_amd64.deb"
+                ]
             ]
         ]
     ]
     ubuntuDtkDownloadUrl = [
         [
             [
-                "http://20.04.ubuntu.dtk.gfdgdxi.top/amd64/5.6.10/libdtkcore5_5.6.10_amd64.deb",
-                "http://20.04.ubuntu.dtk.gfdgdxi.top/amd64/5.6.10/libdtkcore5-bin_5.6.10_amd64.deb",
-                "http://20.04.ubuntu.dtk.gfdgdxi.top/amd64/5.6.10/libdtkgui5-bin_5.6.10_amd64.deb",
-                "http://20.04.ubuntu.dtk.gfdgdxi.top/amd64/5.6.10/libdtkgui5_5.6.10_amd64.deb",
-                "http://20.04.ubuntu.dtk.gfdgdxi.top/amd64/5.6.10/libdtkwidget5-bin_5.6.10_amd64.deb",
-                "http://20.04.ubuntu.dtk.gfdgdxi.top/amd64/5.6.10/libdtkwidget5_5.6.10_amd64.deb"
+                [
+                    "http://20.04.ubuntu.dtk.gfdgdxi.top/amd64/5.6.10/libdtkcore5_5.6.10_amd64.deb",
+                    "http://20.04.ubuntu.dtk.gfdgdxi.top/amd64/5.6.10/libdtkcore5-bin_5.6.10_amd64.deb",
+                    "http://20.04.ubuntu.dtk.gfdgdxi.top/amd64/5.6.10/libdtkgui5-bin_5.6.10_amd64.deb",
+                    "http://20.04.ubuntu.dtk.gfdgdxi.top/amd64/5.6.10/libdtkgui5_5.6.10_amd64.deb",
+                    "http://20.04.ubuntu.dtk.gfdgdxi.top/amd64/5.6.10/libdtkwidget5-bin_5.6.10_amd64.deb",
+                    "http://20.04.ubuntu.dtk.gfdgdxi.top/amd64/5.6.10/libdtkwidget5_5.6.10_amd64.deb"
+                ]
             ],
             [
-                "http://20.04.ubuntu.dtk.gfdgdxi.top/amd64/5.4.20/dde-qt5integration_5.1.12_amd64.deb",
-                "http://20.04.ubuntu.dtk.gfdgdxi.top/amd64/5.4.20/dde-qt5xcb-plugin_5.0.42_amd64.deb",
-                "http://20.04.ubuntu.dtk.gfdgdxi.top/amd64/5.4.20/deepin-menu_5.0.1-1_amd64.deb",
-                "http://20.04.ubuntu.dtk.gfdgdxi.top/amd64/5.4.20/libdframeworkdbus2_5.4.20_amd64.deb",
-                "http://20.04.ubuntu.dtk.gfdgdxi.top/amd64/5.4.20/libdtkcommon_5.5.17_amd64.deb",
-                "http://20.04.ubuntu.dtk.gfdgdxi.top/amd64/5.4.20/libdtkcore5_5.4.20_amd64.deb",
-                "http://20.04.ubuntu.dtk.gfdgdxi.top/amd64/5.4.20/libdtkgui5_5.4.15_amd64.deb",
-                "http://20.04.ubuntu.dtk.gfdgdxi.top/amd64/5.4.20/libdtkwidget5_5.4.20_amd64.deb",
-                "http://20.04.ubuntu.dtk.gfdgdxi.top/amd64/5.4.20/libxcb-util0_0.3.8.1-1+rebuild_amd64.deb"
+                [
+                    "http://20.04.ubuntu.dtk.gfdgdxi.top/amd64/5.4.20/dde-qt5integration_5.1.12_amd64.deb",
+                    "http://20.04.ubuntu.dtk.gfdgdxi.top/amd64/5.4.20/dde-qt5xcb-plugin_5.0.42_amd64.deb",
+                    "http://20.04.ubuntu.dtk.gfdgdxi.top/amd64/5.4.20/deepin-menu_5.0.1-1_amd64.deb",
+                    "http://20.04.ubuntu.dtk.gfdgdxi.top/amd64/5.4.20/libdframeworkdbus2_5.4.20_amd64.deb",
+                    "http://20.04.ubuntu.dtk.gfdgdxi.top/amd64/5.4.20/libdtkcommon_5.5.17_amd64.deb",
+                    "http://20.04.ubuntu.dtk.gfdgdxi.top/amd64/5.4.20/libdtkcore5_5.4.20_amd64.deb",
+                    "http://20.04.ubuntu.dtk.gfdgdxi.top/amd64/5.4.20/libdtkgui5_5.4.15_amd64.deb",
+                    "http://20.04.ubuntu.dtk.gfdgdxi.top/amd64/5.4.20/libdtkwidget5_5.4.20_amd64.deb",
+                    "http://20.04.ubuntu.dtk.gfdgdxi.top/amd64/5.4.20/libxcb-util0_0.3.8.1-1+rebuild_amd64.deb"
+                ]
             ]
         ],
         [
@@ -244,16 +256,42 @@
         id = document.getElementById("DtkSystemVersion").selectedIndex;
         arch = document.getElementById("DtkArch").selectedIndex;
         dtkVersion = document.getElementById("DtkVersion").selectedIndex;
+        
         if(document.getElementById("DtkRelease").value == "Debian"){
             for(i = 0; i < debianDtkDownloadUrl[id][arch][dtkVersion].length; i++){
                 html += "<p><a href='" + debianDtkDownloadUrl[id][arch][dtkVersion][i] + "'>" + debianDtkDownloadUrl[id][arch][dtkVersion][i] + "</a></p>\n"
             }
+            downloadAllFunction = 'DownloadAll(debianDtkDownloadUrl[document.getElementById("DtkSystemVersion").selectedIndex][document.getElementById("DtkArch").selectedIndex][document.getElementById("DtkVersion").selectedIndex]);';
+            document.getElementById("AddAptMirrorCode").innerHTML = `mkdir -p /tmp/gfdgd-xi-sources
+wget -P /tmp/gfdgd-xi-sources http://` + debianVersion[id] + `.debian.gfdgdxi.top/gpg.asc
+gpg --dearmor /tmp/gfdgd-xi-sources/gpg.asc
+sudo cp -v /tmp/gfdgd-xi-sources/gpg.asc.gpg /etc/apt/trusted.gpg.d/gfdgdxi-kernel-list.gpg
+sudo bash -c 'echo deb http://` + debianVersion[id] + `.debian.gfdgdxi.top > /etc/apt/sources.list.d/gfdgdxi-dtk-list.list'
+sudo apt update`;
         }
         else if(document.getElementById("DtkRelease").value == "Ubuntu"){
             for(i = 0; i < ubuntuDtkDownloadUrl[id][arch][dtkVersion].length; i++){
                 html += "<p><a href='" + ubuntuDtkDownloadUrl[id][arch][dtkVersion][i] + "'>" + ubuntuDtkDownloadUrl[id][arch][dtkVersion][i] + "</a></p>\n"
             }
+            downloadAllFunction = 'DownloadAll(ubuntuDtkDownloadUrl[document.getElementById("DtkSystemVersion").selectedIndex][document.getElementById("DtkArch").selectedIndex][document.getElementById("DtkVersion").selectedIndex]);';
+            document.getElementById("AddAptMirrorCode").innerHTML = `mkdir -p /tmp/gfdgd-xi-sources
+wget -P /tmp/gfdgd-xi-sources http://` + ubuntuVersion[id] + `.ubuntu.gfdgdxi.top/gpg.asc
+gpg --dearmor /tmp/gfdgd-xi-sources/gpg.asc
+sudo cp -v /tmp/gfdgd-xi-sources/gpg.asc.gpg /etc/apt/trusted.gpg.d/gfdgdxi-kernel-list.gpg
+sudo bash -c 'echo deb http://` + ubuntuVersion[id] + `.ubuntu.gfdgdxi.top > /etc/apt/sources.list.d/gfdgdxi-dtk-list.list'
+sudo apt update`;
         }
+        html += "<p><button onclick='" + downloadAllFunction + "'>一键下载所有 deb 包</button></p>\n";
+        
         document.getElementById("DownloadUrl").innerHTML = html;
+    }
+    function DownloadAll(lists){
+        for(i = 0; i < lists.length; i++){
+            window.open(lists[i]);
+        }
+    }
+    function UpdateCopyrightInfo(){
+        var d = new Date();
+        document.getElementById("CopyrightInfo").innerHTML = "©2021~" + d.getFullYear() + " <a href='https://gitee.com/gfdgd-xi'>gfdgd xi</a>";
     }
 </script>
