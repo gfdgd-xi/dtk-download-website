@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <head>
     <title>dtk 下载</title>
     <meta name="viewport" content="width=device-width" initial-scale="1" />
@@ -7,6 +8,7 @@
     <meta http-equiv="content-language" content="zh-cn">
 </head>
 <style>
+    
     .copyright {
         position: fixed;
         left: 0px;
@@ -16,49 +18,83 @@
         background-color: #eee;
         z-index: 9999;
     }
+
     pre {
         overflow: auto;
     }
-</style>
-<body onload="ChangeRelease();UpdateCopyrightInfo();">
-    <div id="introduce">
-        <h3>介绍</h3>
-        <p>DTK（Development ToolKit）是统信基于 Qt 开发的一整套简单且实用的通用开发框架，处于统信UOS系统中的核心位置。</p>
-    </div>
-    <div id="download">
-        <div id="choose">
-            <p>发行版：
-                <select onclick="ChangeRelease();" id="DtkRelease">
-                    <option>Debian</option>
-                    <option>Ubuntu</option>
-                </select>
-            </p>
-            <p>系统版本：
-                <select onclick="ChangeDtkSystemVersion();" id="DtkSystemVersion">
-                </select>
-            </p>
-            <p>架构：
-                <select onclick="ChangeDtkArch();" id="DtkArch">
-                </select>
-            </p>
-            <p>DTK 版本：
-                <select onclick="ChangeDtkVersion();" id="DtkVersion">
-                </select>
-            </p>
-        </div>
-        <div id="DownloadUrlShow">
-            <h3>添加 apt 源（推荐）</h3>
-            <div id="DownloadUrlTips">
-                <pre><code id="AddAptMirrorCode"></code></pre>
-            </div>
-            <h3>直接下载 deb</h3>
-            <div id="DownloadUrl">
 
+    #ShowDiv {
+        float: left;
+        width: 76%;
+        left: 10%;
+        border: 1px solid;
+        margin: auto;
+        margin-left: 10%;
+        border-radius: 10px;
+        padding: 2%;
+        background-color: white;
+    }
+    #CopyrightFrame {
+        float: left;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border: 1px solid;
+        margin-left: 5%;
+        width: 90%;
+    }
+    body {
+        background: linear-gradient(blue, pink);
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-color: pink;
+    }
+</style>
+
+<body onload="ChangeRelease();UpdateCopyrightInfo();">
+    <div id="ShowDiv">
+        <div id="introduce">
+            <h2>介绍</h2>
+            <p>DTK（Development ToolKit）是统信基于 Qt 开发的一整套简单且实用的通用开发框架，处于统信UOS系统中的核心位置。</p>
+        </div>
+        <hr>
+        <div id="download">
+            <h2>下载安装包</h2>
+            <div id="choose">
+                <p>发行版：
+                    <select onclick="ChangeRelease();" id="DtkRelease">
+                        <option>Debian</option>
+                        <option>Ubuntu</option>
+                    </select>
+                </p>
+                <p>系统版本：
+                    <select onclick="ChangeDtkSystemVersion();" id="DtkSystemVersion">
+                    </select>
+                </p>
+                <p>架构：
+                    <select onclick="ChangeDtkArch();" id="DtkArch">
+                    </select>
+                </p>
+                <p>DTK 版本：
+                    <select onclick="ChangeDtkVersion();" id="DtkVersion">
+                    </select>
+                </p>
+            </div>
+            <div id="DownloadUrlShow">
+                <h3>添加 apt 源（推荐）</h3>
+                <div id="DownloadUrlTips">
+                    <pre><code id="AddAptMirrorCode"></code></pre>
+                </div>
+                <h3>直接下载 deb</h3>
+                <div id="DownloadUrl">
+
+                </div>
             </div>
         </div>
+        <hr/>
+        <h2 align="center" id="CopyrightInfo">©2021~2023 gfdgd xi</h2>
     </div>
-    <div id="CopyrightFrame">
-        <h3 align="center" id="CopyrightInfo">©2021~2023 gfdgd xi</h3>
+    <div id="CopyrightFrame" hidden>
+        
     </div>
 </body>
 <script>
@@ -66,7 +102,7 @@
     debianVersion = [10, 11];
     ubuntuVersion = [20.04];
     debianDtkArch = [
-        ["amd64", "i386", "mipsel"], 
+        ["amd64", "i386", "mipsel"],
         ["amd64"]
     ];
     ubuntuDtkArch = [
@@ -74,17 +110,17 @@
     ]
     debianDtkVersion = [
         [
-            ["5.6.4", "5.6.2.2", "5.4.20"], 
-            ["5.6.4"], 
+            ["5.6.4", "5.6.2.2", "5.4.20"],
+            ["5.6.4"],
             ["5.6.4"]
-        ], 
+        ],
         [
             ["5.6.4", "5.4.20"]
         ]
     ];
     ubuntuDtkVersion = [
         [
-            ["5.6.10", "5.4.20"], 
+            ["5.6.10", "5.4.20"],
             ["5.4.20"]
         ]
     ];
@@ -130,7 +166,7 @@
                     "http://10.debian.dtk.gfdgdxi.top/i386/5.6.4/libdtkgui5_5.6.4-1_i386.deb",
                     "http://10.debian.dtk.gfdgdxi.top/i386/5.6.4/libdtkwidget5-bin_5.6.4-1_i386.deb",
                     "http://10.debian.dtk.gfdgdxi.top/i386/5.6.4/libdtkwidget5_5.6.4-1_i386.deb"
-                ]  
+                ]
             ],
             [
                 [
@@ -195,37 +231,37 @@
         ],
         [
             [
-                
+
             ]
         ]
     ]
-    function ChangeRelease(){
+    function ChangeRelease() {
         html = "";
-        if(document.getElementById("DtkRelease").value == "Debian"){
-            for(i = 0 ;i < debianVersion.length; i++){
+        if (document.getElementById("DtkRelease").value == "Debian") {
+            for (i = 0; i < debianVersion.length; i++) {
                 html += "<option>" + debianVersion[i] + "</option>\n";
             }
         }
-        else if(document.getElementById("DtkRelease").value == "Ubuntu"){
-            for(i = 0 ;i < ubuntuVersion.length; i++){
+        else if (document.getElementById("DtkRelease").value == "Ubuntu") {
+            for (i = 0; i < ubuntuVersion.length; i++) {
                 html += "<option>" + ubuntuVersion[i] + "</option>\n";
             }
         }
-        document.getElementById("DtkSystemVersion").innerHTML = html; 
+        document.getElementById("DtkSystemVersion").innerHTML = html;
         ChangeDtkSystemVersion();
         ChangeDtkArch();
         ChangeDtkVersion();
     }
-    function ChangeDtkSystemVersion(){
+    function ChangeDtkSystemVersion() {
         html = "";
         id = document.getElementById("DtkSystemVersion").selectedIndex;
-        if(document.getElementById("DtkRelease").value == "Debian"){
-            for(i = 0; i < debianDtkArch[id].length; i++){
+        if (document.getElementById("DtkRelease").value == "Debian") {
+            for (i = 0; i < debianDtkArch[id].length; i++) {
                 html += "<option>" + debianDtkArch[id][i] + "</option>\n"
             }
         }
-        else if(document.getElementById("DtkRelease").value == "Ubuntu"){
-            for(i = 0; i < ubuntuDtkArch[id].length; i++){
+        else if (document.getElementById("DtkRelease").value == "Ubuntu") {
+            for (i = 0; i < ubuntuDtkArch[id].length; i++) {
                 html += "<option>" + ubuntuDtkArch[id][i] + "</option>\n"
             }
         }
@@ -233,32 +269,32 @@
         ChangeDtkArch();
         ChangeDtkVersion();
     }
-    function ChangeDtkArch(){
+    function ChangeDtkArch() {
         html = "";
         id = document.getElementById("DtkSystemVersion").selectedIndex;
         arch = document.getElementById("DtkArch").selectedIndex;
-        if(document.getElementById("DtkRelease").value == "Debian"){
+        if (document.getElementById("DtkRelease").value == "Debian") {
             //window.alert(debianDtkVersion[id]);
-            for(i = 0; i < debianDtkVersion[id][arch].length; i++){
+            for (i = 0; i < debianDtkVersion[id][arch].length; i++) {
                 html += "<option>" + debianDtkVersion[id][arch][i] + "</option>\n"
             }
         }
-        else if(document.getElementById("DtkRelease").value == "Ubuntu"){
-            for(i = 0; i < ubuntuDtkVersion[id][arch].length; i++){
+        else if (document.getElementById("DtkRelease").value == "Ubuntu") {
+            for (i = 0; i < ubuntuDtkVersion[id][arch].length; i++) {
                 html += "<option>" + ubuntuDtkVersion[id][arch][i] + "</option>\n"
             }
         }
         document.getElementById("DtkVersion").innerHTML = html;
         ChangeDtkVersion();
     }
-    function ChangeDtkVersion(){
+    function ChangeDtkVersion() {
         html = "";
         id = document.getElementById("DtkSystemVersion").selectedIndex;
         arch = document.getElementById("DtkArch").selectedIndex;
         dtkVersion = document.getElementById("DtkVersion").selectedIndex;
-        
-        if(document.getElementById("DtkRelease").value == "Debian"){
-            for(i = 0; i < debianDtkDownloadUrl[id][arch][dtkVersion].length; i++){
+
+        if (document.getElementById("DtkRelease").value == "Debian") {
+            for (i = 0; i < debianDtkDownloadUrl[id][arch][dtkVersion].length; i++) {
                 html += "<p><a href='" + debianDtkDownloadUrl[id][arch][dtkVersion][i] + "'>" + debianDtkDownloadUrl[id][arch][dtkVersion][i] + "</a></p>\n"
             }
             downloadAllFunction = 'DownloadAll(debianDtkDownloadUrl[document.getElementById("DtkSystemVersion").selectedIndex][document.getElementById("DtkArch").selectedIndex][document.getElementById("DtkVersion").selectedIndex]);';
@@ -269,8 +305,8 @@ sudo cp -v /tmp/gfdgd-xi-sources/gpg.asc.gpg /etc/apt/trusted.gpg.d/gfdgdxi-kern
 sudo bash -c 'echo deb http://` + debianVersion[id] + `.debian.gfdgdxi.top > /etc/apt/sources.list.d/gfdgdxi-dtk-list.list'
 sudo apt update`;
         }
-        else if(document.getElementById("DtkRelease").value == "Ubuntu"){
-            for(i = 0; i < ubuntuDtkDownloadUrl[id][arch][dtkVersion].length; i++){
+        else if (document.getElementById("DtkRelease").value == "Ubuntu") {
+            for (i = 0; i < ubuntuDtkDownloadUrl[id][arch][dtkVersion].length; i++) {
                 html += "<p><a href='" + ubuntuDtkDownloadUrl[id][arch][dtkVersion][i] + "'>" + ubuntuDtkDownloadUrl[id][arch][dtkVersion][i] + "</a></p>\n"
             }
             downloadAllFunction = 'DownloadAll(ubuntuDtkDownloadUrl[document.getElementById("DtkSystemVersion").selectedIndex][document.getElementById("DtkArch").selectedIndex][document.getElementById("DtkVersion").selectedIndex]);';
@@ -282,15 +318,15 @@ sudo bash -c 'echo deb http://` + ubuntuVersion[id] + `.ubuntu.gfdgdxi.top > /et
 sudo apt update`;
         }
         html += "<p><button onclick='" + downloadAllFunction + "'>一键下载所有 deb 包</button></p>\n";
-        
+
         document.getElementById("DownloadUrl").innerHTML = html;
     }
-    function DownloadAll(lists){
-        for(i = 0; i < lists.length; i++){
+    function DownloadAll(lists) {
+        for (i = 0; i < lists.length; i++) {
             window.open(lists[i]);
         }
     }
-    function UpdateCopyrightInfo(){
+    function UpdateCopyrightInfo() {
         var d = new Date();
         document.getElementById("CopyrightInfo").innerHTML = "©2021~" + d.getFullYear() + " <a href='https://gitee.com/gfdgd-xi'>gfdgd xi</a>";
     }
