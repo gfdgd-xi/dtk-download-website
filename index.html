@@ -106,8 +106,8 @@
     debianVersion = [10, 11];
     ubuntuVersion = [20.04];
     debianDtkArch = [
-        ["amd64", "i386", "mipsel"],
-        ["amd64"]
+        ["amd64", "i386", "mipsel", "armhf", "arm64"],
+        ["amd64", "arm64"]
     ];
     ubuntuDtkArch = [
         ["amd64", "arm64"]
@@ -116,10 +116,13 @@
         [
             ["5.6.4", "5.6.2.2", "5.4.20"],
             ["5.6.4"],
+            ["5.6.4"],
+            ["5.6.4"],
             ["5.6.4"]
         ],
         [
-            ["5.6.4", "5.4.20"]
+            ["5.6.4", "5.4.20"],
+            ["5.6.4"]
         ]
     ];
     ubuntuDtkVersion = [
@@ -159,7 +162,7 @@
                     "http://10.debian.dtk.gfdgdxi.top/amd64/5.4.20/deepin-menu_5.0.1-1_amd64.deb",
                     "http://10.debian.dtk.gfdgdxi.top/amd64/5.4.20/libxcb-util0_0.3.8.1-1+rebuild_amd64.deb",
                     "http://10.debian.dtk.gfdgdxi.top/amd64/5.4.20/libdframeworkdbus2_5.4.20_amd64.deb"
-                ]
+                ],
             ],
             [
                 [
@@ -180,6 +183,24 @@
                     "http://10.debian.dtk.gfdgdxi.top/mipsel/5.6.4/libdtkgui5-bin_5.6.4-1_mipsel.deb",
                     "http://10.debian.dtk.gfdgdxi.top/mipsel/5.6.4/libdtkgui5_5.6.4-1_mipsel.deb"
                 ],
+            ],
+            [
+                "http://10.debian.dtk.gfdgdxi.top/armhf/5.6.4/libdtkcommon_5.6.4-1_armhf.deb",
+                "http://10.debian.dtk.gfdgdxi.top/armhf/5.6.4/libdtkcore5_5.6.4-1_armhf.deb",
+                "http://10.debian.dtk.gfdgdxi.top/armhf/5.6.4/libdtkcore5-bin_5.6.4-1_armhf.deb",
+                "http://10.debian.dtk.gfdgdxi.top/armhf/5.6.4/libdtkgui5_5.6.4-1_armhf.deb",
+                "http://10.debian.dtk.gfdgdxi.top/armhf/5.6.4/libdtkgui5-bin_5.6.4-1_armhf.deb",
+                "http://10.debian.dtk.gfdgdxi.top/armhf/5.6.4/libdtkwidget5_5.6.4-1_armhf.deb",
+                "http://10.debian.dtk.gfdgdxi.top/armhf/5.6.4/libdtkwidget5-bin_5.6.4-1_armhf.deb"
+            ],
+            [
+                "http://10.debian.dtk.gfdgdxi.top/arm64/5.6.4/libdtkcommon_5.6.4-1_arm64.deb",
+                "http://10.debian.dtk.gfdgdxi.top/arm64/5.6.4/libdtkcore5_5.6.4-1_arm64.deb",
+                "http://10.debian.dtk.gfdgdxi.top/arm64/5.6.4/libdtkcore5-bin_5.6.4-1_arm64.deb",
+                "http://10.debian.dtk.gfdgdxi.top/arm64/5.6.4/libdtkgui5_5.6.4-1_arm64.deb",
+                "http://10.debian.dtk.gfdgdxi.top/arm64/5.6.4/libdtkgui5-bin_5.6.4-1_arm64.deb",
+                "http://10.debian.dtk.gfdgdxi.top/arm64/5.6.4/libdtkwidget5_5.6.4-1_arm64.deb",
+                "http://10.debian.dtk.gfdgdxi.top/arm64/5.6.4/libdtkwidget5-bin_5.6.4-1_arm64.deb"
             ]
         ],
         [
@@ -204,6 +225,15 @@
                     "http://11.debian.dtk.gfdgdxi.top/amd64/5.4.20/libdtkwidget5-bin_5.4.20_amd64.deb",
                     "http://11.debian.dtk.gfdgdxi.top/amd64/5.4.20/libdtkwidget5_5.4.20_amd64.deb"
                 ]
+            ],
+            [
+                "http://11.debian.dtk.gfdgdxi.top/arm64/5.6.2/libdtkcommon_5.6.4-1_arm64.deb",
+                "http://11.debian.dtk.gfdgdxi.top/arm64/5.6.2/libdtkcore5_5.6.2.2-1_arm64.deb",
+                "http://11.debian.dtk.gfdgdxi.top/arm64/5.6.2/libdtkcore5-bin_5.6.2.2-1_arm64.deb",
+                "http://11.debian.dtk.gfdgdxi.top/arm64/5.6.2/libdtkgui5_5.6.2.2+2-1_arm64.deb",
+                "http://11.debian.dtk.gfdgdxi.top/arm64/5.6.2/libdtkgui5-bin_5.6.2.2+2-1_arm64.deb",
+                "http://11.debian.dtk.gfdgdxi.top/arm64/5.6.2/libdtkwidget5_5.6.2.2+1-1_arm64.deb",
+                "http://11.debian.dtk.gfdgdxi.top/arm64/5.6.2/libdtkwidget5-bin_5.6.2.2+1-1_arm64.deb"
             ]
         ]
     ]
