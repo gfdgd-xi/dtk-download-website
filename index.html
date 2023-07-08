@@ -333,10 +333,10 @@
             }
             downloadAllFunction = 'DownloadAll(debianDtkDownloadUrl[document.getElementById("DtkSystemVersion").selectedIndex][document.getElementById("DtkArch").selectedIndex][document.getElementById("DtkVersion").selectedIndex]);';
             document.getElementById("AddAptMirrorCode").innerHTML = `mkdir -p /tmp/gfdgd-xi-sources
-wget -P /tmp/gfdgd-xi-sources http://` + debianVersion[id] + `.debian.gfdgdxi.top/gpg.asc
+wget -P /tmp/gfdgd-xi-sources http://` + debianVersion[id] + `.debian.dtk.gfdgdxi.top/gpg.asc
 gpg --dearmor /tmp/gfdgd-xi-sources/gpg.asc
 sudo cp -v /tmp/gfdgd-xi-sources/gpg.asc.gpg /etc/apt/trusted.gpg.d/gfdgdxi-kernel-list.gpg
-sudo bash -c 'echo deb http://` + debianVersion[id] + `.debian.gfdgdxi.top > /etc/apt/sources.list.d/gfdgdxi-dtk-list.list'
+sudo bash -c 'echo deb http://` + debianVersion[id] + `.debian.dtk.gfdgdxi.top > /etc/apt/sources.list.d/gfdgdxi-dtk-list.list'
 sudo apt update`;
         }
         else if (document.getElementById("DtkRelease").value == "Ubuntu") {
@@ -345,10 +345,10 @@ sudo apt update`;
             }
             downloadAllFunction = 'DownloadAll(ubuntuDtkDownloadUrl[document.getElementById("DtkSystemVersion").selectedIndex][document.getElementById("DtkArch").selectedIndex][document.getElementById("DtkVersion").selectedIndex]);';
             document.getElementById("AddAptMirrorCode").innerHTML = `mkdir -p /tmp/gfdgd-xi-sources
-wget -P /tmp/gfdgd-xi-sources http://` + ubuntuVersion[id] + `.ubuntu.gfdgdxi.top/gpg.asc
+wget -P /tmp/gfdgd-xi-sources http://` + ubuntuVersion[id] + `.ubuntu.dtk.gfdgdxi.top/gpg.asc
 gpg --dearmor /tmp/gfdgd-xi-sources/gpg.asc
 sudo cp -v /tmp/gfdgd-xi-sources/gpg.asc.gpg /etc/apt/trusted.gpg.d/gfdgdxi-kernel-list.gpg
-sudo bash -c 'echo deb http://` + ubuntuVersion[id] + `.ubuntu.gfdgdxi.top > /etc/apt/sources.list.d/gfdgdxi-dtk-list.list'
+sudo bash -c 'echo deb http://` + ubuntuVersion[id] + `.ubuntu.dtk.gfdgdxi.top > /etc/apt/sources.list.d/gfdgdxi-dtk-list.list'
 sudo apt update`;
         }
         html += "<p><button onclick='" + downloadAllFunction + "'>一键下载所有 deb 包</button></p>\n";
